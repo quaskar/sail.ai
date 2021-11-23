@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>nmea</name>
+  <version>0.0.0</version>
+  <description>Ros toolkit providing nmea data stream related nodes</description>
+  <maintainer email="sebi@5in1boot.de">Sebastian Pliefke</maintainer>
+  <license>Apache License 2.0</license>
+
+  <test_depend>rclpy</test_depend>
+  <test_depend>std_msgs</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
