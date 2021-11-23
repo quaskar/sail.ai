@@ -20,12 +20,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'talker = nmea.publisher_member_function:main',
-            'nmea_file = nmea.nmea_file:main',
-            'nmea_udp = nmea.nmea_udp:main',
+            'nmea_file_receiver = nmea.nmea_file_receiver:main',
+            'nmea_udp_receiver = nmea.nmea_udp_receiver:main',
             'nmea_decoder = nmea.nmea_decoder:main',
             'nmea_udp_sender = nmea.nmea_udp_sender:main',
-            'listener = nmea.subscriber_member_function:main',
         ],
     },
 )
