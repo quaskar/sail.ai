@@ -1,0 +1,44 @@
+from launch import LaunchDescription
+from launch_ros.actions import Node
+import subprocess
+
+
+def generate_launch_description():
+
+    # open extra tools
+    # subprocess.call('rqt &', shell=True)
+    subprocess.call('/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=opencpn.sh org.opencpn.OpenCPN &', shell=True)
+
+    return LaunchDescription([
+        Node(
+            package='nmea',
+            namespace='',
+            executable='nmea_file_receiver',
+            name='nmea_file_receiver',
+            parameters=[
+                {'filename': './test/data/ijspegel_weekend3/NMEA1_20211114_084047.log',
+                 'repeat': False,
+                 'timelaps': 0.001}
+            ]
+        ),
+        Node(
+            package='nmea',
+            namespace='',
+            executable='nmea_decoder',
+            name='nmea_decoder',
+            parameters=[
+                {'depth_transducer_offset': 0.4,
+                 'talker_filter': 'II'}
+            ]
+        ),
+        Node(
+            package='nmea',
+            namespace='',
+            executable='nmea_udp_sender',
+            name='nmea_udp_sender',
+            parameters=[
+                {'ip': '127.0.0.1',
+                 'port': 10110}
+            ]
+        )
+    ])

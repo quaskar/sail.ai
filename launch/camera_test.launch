@@ -1,0 +1,26 @@
+from launch import LaunchDescription
+from launch_ros.actions import Node
+import subprocess
+
+
+def generate_launch_description():
+    return LaunchDescription([
+        Node(
+            package='gopro',
+            namespace='',
+            executable='gopro',
+            name='gopro',
+            parameters=[
+                {}
+            ]
+        ),
+        Node(
+            package='gopro',
+            namespace='',
+            executable='imshow',
+            name='gopro_imshow',
+            parameters=[
+                {}
+            ]
+        )
+    ])
